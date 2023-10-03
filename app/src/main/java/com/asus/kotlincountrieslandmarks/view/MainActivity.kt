@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        // initialize
         landmarksArrayList = ArrayList<Landmarks>()
 
         val pisa = Landmarks("Pisa","Italy",R.drawable.pisa)

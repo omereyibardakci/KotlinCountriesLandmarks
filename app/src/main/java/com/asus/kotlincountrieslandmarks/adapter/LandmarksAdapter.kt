@@ -1,11 +1,14 @@
 package com.asus.kotlincountrieslandmarks.adapter
 
+import android.content.Intent
+import android.telecom.Call.Details
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.asus.kotlincountrieslandmarks.databinding.RecyclerRowBinding
 import com.asus.kotlincountrieslandmarks.model.Landmarks
+import com.asus.kotlincountrieslandmarks.view.PicturesActivity
 
 class LandmarksAdapter(val landmarksArrayList : ArrayList<Landmarks>) : RecyclerView.Adapter<LandmarksAdapter.LandmarksHolder>() {
 
@@ -29,7 +32,16 @@ class LandmarksAdapter(val landmarksArrayList : ArrayList<Landmarks>) : Recycler
 
     override fun onBindViewHolder(holder: LandmarksHolder, position: Int) {
         holder.binding.recyclerViewTextView.text = landmarksArrayList.get(position).name
+        holder.itemView.setOnClickListener {
 
+        val intent = Intent(holder.itemView.context,PicturesActivity::class.java)
+        // ::class statement gives reference
+
+        intent.putExtra("landmarks",landmarksArrayList.get(position))       // We have to make it serializable -> Landmarks.kt
+        holder.itemView.context.startActivity(intent)
+
+
+        }
 
 
     }
